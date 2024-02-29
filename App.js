@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableHighlight} from 'react-native';
 
-// import { Container } from './styles';
+const Button = ({aoClicar, texto}) => {
+  console.log(aoClicar);
+  console.log(texto);
+  return (
+    <TouchableHighlight onPress={aoClicar}>
+      <Text>{texto}</Text>
+    </TouchableHighlight>
+  );
+};
 
 const App = () => {
   //State (uma variável que pode mudar o valor durante a execução do app)
@@ -10,15 +18,19 @@ const App = () => {
 
   console.log(contador);
 
+  function incrementar() {
+    setContador(contador + 1);
+  }
+
+  function decrementar() {
+    setContador(contador - 1);
+  }
+
   return (
     <View>
       <Text>Contador: {contador}</Text>
-      <TouchableHighlight onPress={() => setContador(contador + 1)}>
-        <Text>Incrementar</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => setContador(contador - 1)}>
-        <Text>Decrementar</Text>
-      </TouchableHighlight>
+      <Button aoClicar={incrementar} texto="Incrementar" />
+      <Button aoClicar={decrementar} texto="Decrementar" />
     </View>
   );
 };
