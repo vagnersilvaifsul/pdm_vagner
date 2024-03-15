@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Button from '../components/Button';
+import MyButtom from '../components/MyButtom';
 
 export default function Home({navigation}) {
   //State (uma variável que pode mudar o valor durante a execução do app)
@@ -35,11 +35,11 @@ export default function Home({navigation}) {
   return (
     <View>
       <Text style={styles.texto}>Contador: {contador}</Text>
-      <Button aoClicar={incrementar} texto="Incrementar" />
-      <Button aoClicar={decrementar} texto="Decrementar" />
-      <Button
-        aoClicar={() => navigation.navigate('SignIn')}
-        texto="Ir para SignIn"
+      <MyButtom onClick={incrementar} text="Incrementar" />
+      <MyButtom onClick={decrementar} text="Decrementar" />
+      <MyButtom
+        onClick={() => navigation.navigate('SignIn')}
+        text="Ir para SignIn"
       />
     </View>
   );
