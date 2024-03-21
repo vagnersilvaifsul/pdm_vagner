@@ -6,6 +6,7 @@ import {useTheme, Input, Icon, Text, Image} from '@rneui/themed';
 import MyButtom from '../../components/MyButtom';
 import Loading from '../../components/Loading';
 import {AuthUserContext} from '../../context/AuthUserProvider';
+import {CommonActions} from '@react-navigation/native';
 
 const SignIn = ({navigation}) => {
   const {theme} = useTheme();
@@ -74,8 +75,22 @@ const SignIn = ({navigation}) => {
     },
   });
 
-  function entrar() {
-    alert('entrar');
+  async function entrar() {
+    setLoading(true);
+    let msgError = await signIn(email, password);
+    if (msgError === 'ok') {
+      setLoading(false);
+      navigation.navigate('Home');
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{name: 'Home'}],
+        }),
+      );
+    } else {
+      alert(msgError);
+      setLoading(false);
+    }
   }
 
   return (

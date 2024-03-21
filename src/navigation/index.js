@@ -2,6 +2,7 @@ import React from 'react';
 import Navigator from './Navigator';
 import {ThemeProvider, createTheme} from '@rneui/themed';
 import {COLORS} from '../assets/colors';
+import {AuthUserProvider} from '../context/AuthUserProvider';
 
 const theme = createTheme({
   lightColors: {
@@ -78,7 +79,9 @@ const theme = createTheme({
 const Providers = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Navigator />
+      <AuthUserProvider>
+        <Navigator />
+      </AuthUserProvider>
     </ThemeProvider>
   );
 };
