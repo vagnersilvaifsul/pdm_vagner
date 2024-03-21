@@ -80,11 +80,10 @@ const SignIn = ({navigation}) => {
     let msgError = await signIn(email, password);
     if (msgError === 'ok') {
       setLoading(false);
-      navigation.navigate('Home');
       navigation.dispatch(
         CommonActions.reset({
           index: 0,
-          routes: [{name: 'Home'}],
+          routes: [{name: 'AppStack'}],
         }),
       );
     } else {
