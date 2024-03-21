@@ -88,7 +88,7 @@ const SignIn = ({navigation}) => {
         }),
       );
     } else {
-      alert(msgError);
+      Alert.alert('Ops! Erro', msgError);
       setLoading(false);
     }
   }

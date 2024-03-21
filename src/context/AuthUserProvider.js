@@ -34,6 +34,9 @@ export const AuthUserProvider = ({children}) => {
   async function signIn(email, pass) {
     try {
       await auth().signInWithEmailAndPassword(email, pass);
+      if (auth().currentUser.emailVerified) {
+        return 'Você deve validar seu email para continuar.';
+      }
       await storeUserSession(email, pass);
       return 'ok'; //retorna avisando que fez o login
     } catch (e) {
