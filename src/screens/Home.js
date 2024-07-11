@@ -47,7 +47,7 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
   texto: {
-    size: 24,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#f00',
   },

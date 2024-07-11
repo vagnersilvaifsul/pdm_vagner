@@ -8,6 +8,7 @@ import SignIn from '../screens/SignIn';
 import Preload from '../screens/Preload';
 import {StatusBar} from 'react-native';
 import {Icon, useTheme} from '@rneui/themed';
+import Alunos from '../screens/Alunos';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,13 +18,13 @@ function AppStack() {
   const {theme} = useTheme();
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Alunos"
       screenOptions={{
         headerShown: false,
       }}>
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="Alunos"
+        component={Alunos}
         options={{
           tabBarLabel: 'Alunos',
           tabBarIcon: () => (
