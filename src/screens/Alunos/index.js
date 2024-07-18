@@ -1,7 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components/native';
 import {AlunoContext} from '../../context/AlunoProvider';
 import Item from './Item';
+import FloatButtonAdd from '../../components/FloatButtonAdd';
 
 const Container = styled.SafeAreaView`
   flex: 1;
@@ -13,7 +14,7 @@ const FlatList = styled.FlatList`
   height: 100%;
 `;
 
-export default function () {
+export default function ({navigation}) {
   const {alunos} = useContext(AlunoContext);
   //aqui eu vou exibir os dados
   //console.log(alunos);
@@ -21,6 +22,12 @@ export default function () {
   //   {uid: '1', nome: 'Ana', curso: 'CSTSI'},
   //   {uid: '2', nome: 'Rafael', curso: 'CSBD'},
   // ]);
+
+  const routeStudent = value => {
+    navigation.navigate('Aluno', {
+      value,
+    });
+  };
   return (
     <Container>
       {/* {alunos.map((v, k) => (
@@ -29,10 +36,11 @@ export default function () {
       <FlatList
         data={alunos}
         renderItem={({item}) => (
-          <Item item={item} onPress={() => alert('foi')} key={item.uid} />
+          <Item item={item} onPress={() => routeStudent(item)} key={item.uid} />
         )}
         keyExtractor={item => item.uid}
       />
+      <FloatButtonAdd onClick={() => routeStudent(null)} />
     </Container>
   );
 }

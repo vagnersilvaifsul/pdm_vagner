@@ -9,6 +9,7 @@ import Preload from '../screens/Preload';
 import {StatusBar} from 'react-native';
 import {Icon, useTheme} from '@rneui/themed';
 import Alunos from '../screens/Alunos';
+import Aluno from '../screens/Aluno';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +71,7 @@ const Navigator = () => {
         }}>
         <Stack.Screen name="AuthStack" component={AuthStack} />
         <Stack.Screen name="AppStack" component={AppStack} />
+        <Stack.Screen name="Aluno" component={Aluno} />
       </Stack.Navigator>
     </NavigationContainer>
   );
